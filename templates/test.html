@@ -1,0 +1,23 @@
+{% extends 'temp.html' %}
+{% block head %}
+<h1>Can you pick only one favourite colour?</h1>
+{% endblock %}
+
+{%block body%}
+
+What is your favourite colour?
+
+<select name= colours method="GET" action="/">
+	{% for colour in colours %}
+	<option value= "{{colour}}" SELECTED>{{ colour }}</option>
+	{% endfor %}
+</select>
+
+<form action="/">
+  <input type="submit" value="Back">
+</form>
+
+<p>Click the "Back" button to go back to the home page.</p>
+</select>
+
+{%endblock%}

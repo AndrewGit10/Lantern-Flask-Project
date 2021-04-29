@@ -1,0 +1,116 @@
+{% extends 'temp.html' %}
+{% block head %}
+<h1>If you have more than one favourite then select with the checkbox!</h1>
+{% endblock %}
+
+{%block body%}
+
+<form action="/action_page.php">
+
+<p style="font-size:30px">Red:</p>
+<label class="switch">
+ <input type="checkbox" id="tog" name="Red_Button" value="Red">
+ <div class="slider round">
+  <span class="on">ON</span>
+  <span class="off">OFF</span>
+ </div>
+</label>
+
+<br><p style="font-size:30px">Blue:</p>
+<label class="switch">
+ <input type="checkbox" id="tog" name="Blue_Button" value="Blue">
+ <div class="slider round">
+  <span class="on">ON</span>
+  <span class="off">OFF</span>
+ </div>
+</label>
+
+<br><p style="font-size:30px">Green:</p>
+<label class="switch">
+ <input type="checkbox" id="tog" name="Green_Button" value="Green">
+ <div class="slider round">
+  <span class="on">ON</span>
+  <span class="off">OFF</span>
+ </div>
+</label>
+
+<br>
+<input type="button" onclick="myFunction()" value="List colours">
+<br><br>
+<input type="text" id="order" size="50">
+</form>
+
+<script>
+function myFunction() {
+  var color = document.forms[0];
+  var txt = "";
+  var i;
+  for (i = 0; i < color.length; i++) {
+    if (color[i].checked) {
+      txt = txt + color[i].value + " ";
+    }
+  }
+  document.getElementById("order").value = "You chose: " + txt;
+}
+</script>
+
+<br><p>Type in your colors and check their status.</p>
+<br><input type="text" id="myText" value="Some text...">
+
+<button onclick="myTextFunction()">Check Status</button>
+
+<p id="demo"></p>
+
+<script>
+function myTextFunction() {
+  var color = document.forms[0];
+  var x = document.getElementById("myText").value;
+  var i;
+  var txt = "Which buttons are on? ";
+  var oldtxt = txt
+  for (i = 0; i < color.length; i++) {
+    if(color[i].type== "checkbox"){
+      if(color[i].value == x){
+        txt = txt + " " + color[i].name + " on = " + color[i].checked + "." 
+      }
+    }    
+  }
+  if(txt == oldtxt){
+        txt = "Check your spelling, words should be spelled the same as above and are case sensitive."
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+<br><p>Type in your colors and change their status.</p>
+<br><input type="text" id="myChangeText" value="Some text...">
+<button type="button" title="Some CheckBox" onclick="changeStateButton();">Change Status</button>
+
+<script>
+function changeStateButton(){
+  var color = document.forms[0];
+  var i; 
+  var txt = document.getElementById("myChangeText").value;
+  for(i = 0; i < color.length; i++) {
+    if((color[i].type== "checkbox") && (color[i].value == txt)){
+      txt = txt + " " + color[i].name + " " + color[i].checked
+      if (!color[i].checked) {
+        color[i].checked = "checked";
+      } else {
+        color[i].checked = "";
+      }
+    }
+  }
+}
+
+</script>
+
+
+<br><br><form action="/">
+  <input type="submit" value="Back">
+</form>
+
+<p>Click the "Back" button to go back to the home page.</p>
+</select>
+
+{%endblock%}
